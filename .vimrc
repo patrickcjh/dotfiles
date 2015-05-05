@@ -79,10 +79,10 @@ set number
 set splitbelow
 set splitright
 " Tabs settings
-set noexpandtab
+set expandtab
 set softtabstop=0
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 " Make tab completion in command mode behave like in Bash
 set wildmenu
 set wildmode=longest,list
