@@ -1,2 +1,10 @@
+syntax: glob
+.android
+.cache
+.eclipse
+.gradle
+.ros
+
 syntax: regexp
 ^[^\.].*
+
