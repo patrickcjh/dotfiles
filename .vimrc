@@ -97,6 +97,12 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_key_list_select_completion = ['<TAB>']		" Disable <Down> key
 let g:ycm_key_list_previous_completion = ['<S-TAB>']	" Disable <Up> key
 
+" Associates triggers with ROS filetypes
+let g:ycm_semantic_triggers = {
+\   'roslaunch': ['="', '$(', '/'],
+\   'rosmsg,rossrv,rosaction': ['re!^'],
+\ }
+
 
 " Import mswin key mappings and behavior.
 source $VIMRUNTIME/mswin.vim
