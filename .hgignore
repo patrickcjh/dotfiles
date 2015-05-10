@@ -1,9 +1,15 @@
 syntax: glob
 .android
 .cache
+.compiz
+.config
 .eclipse
 .gradle
+.local
+.m2
+.mozilla
 .ros
+.vim/bundle
 
 syntax: regexp
 ^[^\.].*
