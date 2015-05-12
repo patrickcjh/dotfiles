@@ -90,6 +90,11 @@ set wildmode=longest,list
 " Use tree view for netrw directory browsing
 let g:netrw_liststyle=3
 
+" CtrlSpace config
+let g:ctrlspace_save_workspace_on_exit = 1
+let g:ctrlspace_save_workspace_on_switch = 1
+let g:ctrlspace_load_last_workspace_on_start = 1
+
 " YouCompleteMe config
 let g:ycm_always_populate_location_list = 1
 let g:ycm_confirm_extra_conf = 0
