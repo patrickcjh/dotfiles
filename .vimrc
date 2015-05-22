@@ -30,6 +30,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'djoshea/vim-autoread'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'taketwo/vim-ros'
+Plugin 'Chiel92/vim-autoformat'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'justmao945/vim-clang'
 Plugin 'Valloric/YouCompleteMe'
@@ -97,6 +98,11 @@ let g:ctrlspace_save_workspace_on_switch = 1
 let g:ctrlspace_load_last_workspace_on_start = 1
 let g:ctrlspace_use_mouse_and_arrows_in_term = 1
 
+" AutoFormat config
+let g:formatprg_cpp = "astyle"
+let g:formatprg_args_cpp = "--style=allman --indent=spaces=2 --pad-oper --unpad-paren --pad-header --convert-tabs"
+let g:formatprg_python = "autopep8"
+
 " YouCompleteMe config
 let g:ycm_always_populate_location_list = 1
 let g:ycm_confirm_extra_conf = 0
@@ -132,6 +138,9 @@ inoremap <C-S><C-S>		<C-O>:wq<CR>
 inoremap II		<Esc>I
 inoremap AA		<Esc>A
 inoremap OO		<Esc>O
+
+" AutoFormat shortcuts
+noremap <F3> :Autoformat<CR><CR>
 
 " YouCompleteMe shortcuts
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
