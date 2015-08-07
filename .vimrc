@@ -37,6 +37,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'pyclewn'
+Plugin 'tpope/vim-fugitive'
+Plugin 'ludovicchabant/vim-lawrencium'
 
 
 " All of your Plugins must be added before the following line
