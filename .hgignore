@@ -3,12 +3,16 @@ syntax: glob
 .cache
 .compiz
 .config
+.cordova
 .eclipse
+.gnome
 .gradle
 .local
 .m2
 .mozilla
+.npm
 .ros
+.ssh
 .vim/bundle
 
 syntax: regexp
