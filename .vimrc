@@ -80,6 +80,7 @@ set ruler
 set number
 set splitbelow
 set splitright
+set hidden
 " Tabs settings
 set expandtab
 set softtabstop=0
@@ -94,11 +95,11 @@ set wildignore=*.o,*.class,*.swp,*.swo,*.pyc
 let g:netrw_liststyle=3
 
 " CtrlSpace config
-let g:ctrlspace_save_workspace_on_exit = 1
-let g:ctrlspace_save_workspace_on_switch = 1
-let g:ctrlspace_load_last_workspace_on_start = 1
-let g:ctrlspace_use_mouse_and_arrows_in_term = 1
-let g:ctrlspace_ignored_files = '\v(tmp|temp|build)[\/]'
+let g:CtrlspaceSaveWorkspaceOnExit = 1
+let g:CtrlspaceSaveWorkspaceOnSwitch = 1
+let g:CtrlspaceLoadLastWorkspaceOnStart = 1
+let g:CtrlspaceUseMouseAndArrowsInTerm = 1
+let g:CtrlspaceIgnoredFiles = '\v(tmp|temp|build|node_modules|platforms|plugins|www\/lib)[\/]'
 
 " AutoFormat config
 let g:formatprg_cpp = "astyle"
