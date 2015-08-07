@@ -109,6 +109,7 @@ let g:CtrlspaceIgnoredFiles = '\v(tmp|temp|build|node_modules|platforms|plugins|
 let g:formatprg_cpp = "astyle"
 let g:formatprg_args_cpp = "--style=allman --indent=spaces=2 --pad-oper --unpad-paren --pad-header --convert-tabs"
 let g:formatprg_python = "autopep8"
+let g:formatprg_args_python = "--max-line-length=199 --ignore=E128 -"
 
 " YouCompleteMe config
 let g:ycm_always_populate_location_list = 1
@@ -153,7 +154,8 @@ inoremap AA		<Esc>A
 inoremap OO		<Esc>O
 
 " AutoFormat shortcuts
-noremap <F3> :Autoformat<CR><CR>
+"noremap <F3> :Autoformat<CR><CR>
+noremap <leader>af :Autoformat<CR>
 
 " YouCompleteMe shortcuts
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
