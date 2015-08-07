@@ -1,2 +1,3 @@
 [core]
 	excludesfile = /home/ros/.gitignore_global
+	editor = vim
