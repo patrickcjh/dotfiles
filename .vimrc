@@ -34,6 +34,8 @@ Plugin 'Chiel92/vim-autoformat'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'justmao945/vim-clang'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
+Plugin 'SirVer/ultisnips'
 Plugin 'pyclewn'
 
 
@@ -110,14 +112,20 @@ let g:formatprg_python = "autopep8"
 let g:ycm_always_populate_location_list = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_key_list_select_completion = ['<TAB>']		" Disable <Down> key
-let g:ycm_key_list_previous_completion = ['<S-TAB>']	" Disable <Up> key
+let g:ycm_key_list_select_completion = ['<C-n>']		" Disable <Down> and <TAB> key
+let g:ycm_key_list_previous_completion = ['<C-p>']	" Disable <Up> and <S-TAB> key
 
 " Associates triggers with ROS filetypes
 let g:ycm_semantic_triggers = {
 \   'roslaunch': ['="', '$(', '/'],
 \   'rosmsg,rossrv,rosaction': ['re!^'],
 \ }
+
+" SuperTab and UltiSnips config
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:UltiSnipsExpandTrigger = '<TAB>'
+let g:UltiSnipsJumpForwardTrigger = '<TAB>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
 
 
 " Import mswin key mappings and behavior.
