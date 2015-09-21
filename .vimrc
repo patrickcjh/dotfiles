@@ -99,11 +99,11 @@ set wildignore=*.o,*.class,*.swp,*.swo,*.pyc
 let g:netrw_liststyle=3
 
 " CtrlSpace config
-let g:CtrlspaceSaveWorkspaceOnExit = 1
-let g:CtrlspaceSaveWorkspaceOnSwitch = 1
-let g:CtrlspaceLoadLastWorkspaceOnStart = 1
-let g:CtrlspaceUseMouseAndArrowsInTerm = 1
-let g:CtrlspaceIgnoredFiles = '\v(tmp|temp|build|node_modules|platforms|plugins|www\/lib)[\/]'
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
+let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|build|node_modules|platforms|plugins|www\/lib)[\/]'
 
 " AutoFormat config
 let g:formatprg_cpp = "astyle"
