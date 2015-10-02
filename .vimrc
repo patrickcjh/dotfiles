@@ -28,6 +28,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'djoshea/vim-autoread'
+Plugin 'terryma/vim-smooth-scroll'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'taketwo/vim-ros'
 Plugin 'Chiel92/vim-autoformat'
@@ -152,6 +153,14 @@ inoremap <C-S><C-S>		<C-O>:wq<CR>
 inoremap II		<Esc>I
 inoremap AA		<Esc>A
 inoremap OO		<Esc>O
+
+" Smooth Scroll shortcuts
+noremap <silent> <c-y> :call smooth_scroll#up(3, 0, 3)<CR>
+noremap <silent> <c-e> :call smooth_scroll#down(3, 0, 3)<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
 
 " AutoFormat shortcuts
 "noremap <F3> :Autoformat<CR><CR>
