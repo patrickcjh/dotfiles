@@ -106,6 +106,11 @@ let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
 let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|build|node_modules|platforms|plugins|www\/lib)[\/]'
 
+" ROS config
+let g:ros_make = "current"
+let g:ros_build_system = "catkin"
+let g:ros_catkin_make_options = "-DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+
 " AutoFormat config
 let g:formatprg_cpp = "astyle"
 let g:formatprg_args_cpp = "--style=allman --indent=spaces=2 --pad-oper --unpad-paren --pad-header --convert-tabs"
@@ -161,6 +166,9 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
+
+" ROS shortcuts
+noremap <F10> :make<CR>
 
 " AutoFormat shortcuts
 "noremap <F3> :Autoformat<CR><CR>
