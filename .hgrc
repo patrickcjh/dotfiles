@@ -1,0 +1,21 @@
+[ui]
+editor=vim
+ignore=~/.hgignore_global
+
+[extensions]
+churn =
+histedit = 
+mercurial_keyring = 
+strip = 
+
+[tortoisehg]
+postpull = update
+editor = gedit
+
+[auth]
+
+[alias]
+blame = blame --user --number --line-number --ignore-all-space
+revertall = revert -all
+slog = log --template '{rev}:{node|short} {desc|firstline}\n'
+latest = log -l 5

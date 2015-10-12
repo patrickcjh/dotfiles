@@ -1,3 +1,4 @@
-# Temp files
-*.swp
-*.pyc
+__pycache__/
+*.sw[po]
+*.py[cod]
+*~
