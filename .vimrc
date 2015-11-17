@@ -112,9 +112,12 @@ let g:ros_build_system = "catkin"
 let g:ros_catkin_make_options = "-DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
 
 " AutoFormat config
-let g:formatdef_astyle_cpp = '"--style=allman --indent=spaces=2 --pad-oper --unpad-paren --pad-header --convert-tabs"'
+let g:autoformat_verbosemode = 1
+"! astyle version 2.05 or higher is required
+let g:formatdef_astyle_cpp = '"astyle --mode=c --style=allman --indent=spaces=2 --pad-oper --unpad-paren --pad-header --convert-tabs"'
 let g:formatters_cpp = ['astyle_cpp']
-let g:formatdef_autopep8 = '"-aa --max-line-length=199 --ignore=E128"'
+"! sudo apt-get install python-autopep8
+let g:formatdef_autopep8 = '"autopep8 - -aa --max-line-length=199 --ignore=E128"'
 let g:formatters_python = ['autopep8']
 
 " YouCompleteMe config
