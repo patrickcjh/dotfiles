@@ -5,7 +5,7 @@ ignore=~/.hgignore_global
 [extensions]
 churn =
 histedit = 
-mercurial_keyring = 
+#mercurial_keyring = 
 strip = 
 
 [tortoisehg]
