@@ -119,6 +119,11 @@ let g:formatters_cpp = ['astyle_cpp']
 "! sudo apt-get install python-autopep8
 let g:formatdef_autopep8 = '"autopep8 - -aa --max-line-length=199 --ignore=E128"'
 let g:formatters_python = ['autopep8']
+"! sudo npm install -g js-beautify
+" Formatter for js, json, html and css.
+let g:formatdef_jsbeautify_js = '"js-beautify -f - --jslint-happy -s 2 -n"'
+let g:formatters_javascript = ['jsbeautify_js']
+let g:formatters_json = ['jsbeautify_js']
 
 " YouCompleteMe config
 let g:ycm_always_populate_location_list = 1
