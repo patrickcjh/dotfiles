@@ -1,3 +1,20 @@
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = vim
+  excludesfile = ~/.gitignore_global
+  editor = vim
+
+[alias]
+  branches = branch -a
+  remotes = remote -v
+  stashes = stash list
+  tags = tag
+
+  unstage = reset -q HEAD --
+  discard = checkout --
+  uncommit = reset --mixed HEAD~
+  amend = commit --amend
+
+  nevermind = !git reset --hard HEAD && git clean -d -f
+
+  graph = log --graph -10 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+
+  precommit = diff --cached --diff-algorithm=minimal -w
