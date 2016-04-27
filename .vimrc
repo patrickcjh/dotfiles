@@ -103,7 +103,7 @@ let g:CtrlSpaceSaveWorkspaceOnExit = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
-let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|build|node_modules|platforms|plugins|www\/lib)[\/]'
+let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|build|env|node_modules|platforms|plugins|www\/lib)[\/]'
 
 " ROS config
 let g:ros_make = "current"
