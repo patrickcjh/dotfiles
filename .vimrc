@@ -153,9 +153,9 @@ nunmap <C-Y>
 iunmap <C-Y>
 
 " Tap CTRL-S twice for save and exit, also in Insert mode
-noremap <C-S><C-S>		:wq<CR>
-vnoremap <C-S><C-S>		<C-C>:wq<CR>
-inoremap <C-S><C-S>		<C-O>:wq<CR>
+"noremap <C-S><C-S>		:wq<CR>
+"vnoremap <C-S><C-S>		<C-C>:wq<CR>
+"inoremap <C-S><C-S>		<C-O>:wq<CR>
 
 " Tap CTRL-W twice for exit, also in Insert mode
 "noremap <C-W><C-W>		:q!<CR>
