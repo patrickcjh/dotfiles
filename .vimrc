@@ -176,7 +176,7 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
 
 " ROS shortcuts
-noremap <F10> :make<CR>
+noremap <F10> :make!<CR>
 
 " AutoFormat shortcuts
 "noremap <F3> :Autoformat<CR><CR>
