@@ -7,6 +7,7 @@ churn =
 histedit = 
 #mercurial_keyring = 
 strip = 
+rebase = 
 
 [tortoisehg]
 postpull = update
