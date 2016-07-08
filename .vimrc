@@ -82,6 +82,7 @@ set smartcase		" Do smart case matching
 set mouse=a			" Enable mouse usage (all modes)
 set ruler
 set number
+set relativenumber
 set splitbelow
 set splitright
 set hidden
