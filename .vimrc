@@ -168,6 +168,34 @@ inoremap II		<Esc>I
 inoremap AA		<Esc>A
 inoremap OO		<Esc>O
 
+" Move by virtual lines when used without a count
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" Quickly select the text that was just pasted. This allows you to, e.g.,
+" indent it after pasting.
+noremap gV `[v`]
+
+" Stay in visual mode when indenting. You will never have to run gv after
+" performing an indentation.
+vnoremap < <gv
+vnoremap > >gv
+
+" Make Y yank everything from the cursor to the end of the line. This makes Y
+" act more like C or D because by default, Y yanks the current line (i.e. the
+" same as yy).
+noremap Y y$
+
+" Allows you to easily replace the current word and all its occurrences.
+nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
+vnoremap <Leader>rc y:%s/<C-r>"/
+
+" Allows you to easily change the current word and all occurrences to something
+" else. The difference between this and the previous mapping is that the mapping
+" below pre-fills the current word for you to change.
+nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
+
 " Smooth Scroll shortcuts
 noremap <silent> <c-y> :call smooth_scroll#up(3, 0, 3)<CR>
 noremap <silent> <c-e> :call smooth_scroll#down(3, 0, 3)<CR>
