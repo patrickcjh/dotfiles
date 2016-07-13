@@ -196,6 +196,16 @@ vnoremap <Leader>rc y:%s/<C-r>"/
 nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
 vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
 
+" Diff shortcuts
+noremap <leader>df :call DiffToggle()<CR>
+function! DiffToggle()
+  if &diff
+    diffoff!
+  else
+    windo diffthis
+  endif
+:endfunction
+
 " Smooth Scroll shortcuts
 noremap <silent> <c-y> :call smooth_scroll#up(3, 0, 3)<CR>
 noremap <silent> <c-e> :call smooth_scroll#down(3, 0, 3)<CR>
