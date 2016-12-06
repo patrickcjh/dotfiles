@@ -18,5 +18,6 @@ editor = gedit
 [alias]
 blame = blame --user --number --line-number --ignore-all-space
 revertall = revert -all
+glog = log --graph
 slog = log --template '{rev}:{node|short} {desc|firstline}\n'
 latest = log -l 5
