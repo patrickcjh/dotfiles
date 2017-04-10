@@ -124,6 +124,9 @@ let g:formatdef_jsbeautify_js = '"js-beautify -f - --jslint-happy -s 2 -n"'
 let g:formatters_javascript = ['jsbeautify_js']
 let g:formatters_json = ['jsbeautify_js']
 
+" Indentation config for html and htmldjango
+let g:html_indent_inctags = 'body,head,tbody,p'
+
 " YouCompleteMe config
 let g:ycm_always_populate_location_list = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
