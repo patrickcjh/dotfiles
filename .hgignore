@@ -4,16 +4,27 @@ syntax: glob
 .compiz
 .config
 .cordova
+.dbus
+.debug
 .eclipse
+.env*
+.erlang.*
 .gnome
 .gradle
+.ipython
 .local
 .m2
 .mozilla
+.node-gyp
 .npm
+.pip
+.pki
 .ros
 .ssh
 .vim/bundle
+.w3m
+.Xauthority
+.*history
 
 syntax: regexp
 ^[^\.].*
