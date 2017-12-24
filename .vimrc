@@ -188,6 +188,9 @@ vnoremap > >gv
 " same as yy).
 noremap Y y$
 
+" Avoid pressing shift key to switch to previous tab
+noremap gr gT
+
 " Allows you to easily replace the current word and all its occurrences.
 nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
 vnoremap <Leader>rc y:%s/<C-r>"/
