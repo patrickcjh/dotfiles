@@ -108,7 +108,7 @@ let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|build|dist|env|node_modules|platforms
 " ROS config
 let g:ros_make = "current"
 let g:ros_build_system = "catkin"
-let g:ros_catkin_make_options = "-DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+"let g:ros_catkin_make_options = "-DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
 
 " AutoFormat config
 let g:autoformat_verbosemode = 1
