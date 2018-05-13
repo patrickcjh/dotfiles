@@ -57,6 +57,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
+" Inherit aliases from ~/.bash_aliases
+let $BASH_ENV = "~/.bash_aliases"
+
+
 " Switch to a color scheme for dark background
 set background=dark
 
