@@ -234,6 +234,12 @@ noremap <F10> :make!<CR>
 "noremap <F3> :Autoformat<CR><CR>
 noremap <leader>af :Autoformat<CR>
 
+" Fugitive shortcuts
+nnoremap [q :cprev<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap ]Q :clast<CR>
+
 " YouCompleteMe shortcuts
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
