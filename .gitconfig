@@ -1,6 +1,7 @@
 [core]
   excludesfile = ~/.gitignore_global
   editor = vim
+  autocrlf = input
 
 [alias]
   branches = branch -a
@@ -8,6 +9,7 @@
   stashes = stash list
   tags = tag
   summary = show --summary
+  slog = log --oneline
 
   unstage = reset -q HEAD --
   discard = checkout --
@@ -19,3 +21,16 @@
   graph = log --graph -10 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
 
   precommit = diff --cached --diff-algorithm=minimal -w
+
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+
+[mergetool]
+  prompt = false
+
+[pull]
+  rebase = preserve
+
+[rebase]
+  autoStash = true
