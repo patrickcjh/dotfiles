@@ -5,10 +5,18 @@
 
 [alias]
   branches = branch -a
+  brs = branch -a
+  br = branch
   remotes = remote -v
+  rems = remote -v
+  rem = remote
   stashes = stash list
+  sts = stash list
+  sta = stash
   tags = tag
   summary = show --summary
+  sum = show --summary
+  st = status
   slog = log --oneline
   mlog = log --format=format:'%C(yellow)%h %C(white)%s %Cgreen(%ar by %an)'
 
@@ -33,6 +41,7 @@
   prompt = false
 
 [pull]
+  default = simple
   rebase = preserve
 
 [rebase]
