@@ -1,4 +1,4 @@
-syntax: glob
+/[^.]*
 .android
 .bloom*
 .cache
@@ -10,9 +10,9 @@ syntax: glob
 .eclipse
 .env*
 .erlang.*
-.git
 .gnome
 .gradle
+.hg
 .ipython
 .local
 .m2
@@ -27,7 +27,3 @@ syntax: glob
 .w3m
 .Xauthority
 .*history
-
-syntax: regexp
-^[^\.].*
-
