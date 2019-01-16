@@ -41,8 +41,10 @@
   prompt = false
 
 [pull]
-  default = simple
   rebase = preserve
+
+[push]
+	default = simple
 
 [rebase]
   autoStash = true
