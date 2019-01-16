@@ -214,6 +214,7 @@ noremap <leader>df :call DiffToggle()<CR>
 function! DiffToggle()
   if &diff
     diffoff!
+    windo setlocal nocursorbind
   else
     windo diffthis
   endif
