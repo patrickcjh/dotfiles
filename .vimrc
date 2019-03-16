@@ -64,6 +64,9 @@ let $BASH_ENV = "~/.bash_aliases"
 " Switch to a color scheme for dark background
 set background=dark
 
+" Fix diff color scheme
+highlight DiffText term=reverse cterm=bold ctermbg=124 gui=bold guibg=Red3
+
 " Change auto-complete color scheme
 highlight Pmenu ctermbg=brown ctermfg=black
 highlight PmenuSel ctermbg=green
