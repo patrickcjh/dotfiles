@@ -38,6 +38,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'erisian/rest_tools'
+Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-lawrencium'
 
