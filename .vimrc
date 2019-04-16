@@ -37,6 +37,7 @@ Plugin 'Chiel92/vim-autoformat'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
+Plugin 'erisian/rest_tools'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-lawrencium'
 
@@ -237,6 +238,9 @@ noremap <F10> :make!<CR>
 " AutoFormat shortcuts
 "noremap <F3> :Autoformat<CR><CR>
 noremap <leader>af :Autoformat<CR>
+
+" Remove trailing whitespaces
+noremap <leader>as :%s/\s\+$//e<CR>
 
 " Fugitive shortcuts
 nnoremap [q :cprev<CR>
