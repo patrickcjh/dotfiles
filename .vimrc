@@ -39,6 +39,7 @@ Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'erisian/rest_tools'
 Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-lawrencium'
 
@@ -156,6 +157,8 @@ let g:UltiSnipsExpandTrigger = '<TAB>'
 let g:UltiSnipsJumpForwardTrigger = '<TAB>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
 
+" vim-puppet config
+let g:puppet_align_hashes = 0
 
 " Import mswin key mappings and behavior.
 source $VIMRUNTIME/mswin.vim
