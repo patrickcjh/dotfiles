@@ -30,8 +30,8 @@
   nevermind = !git reset --hard HEAD && git clean -d -f
   nvm = !git reset --hard HEAD && git clean -d -f
 
-  graph = log --graph -100 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%aN, %ar) %Cred%d'
-  graph2 = log --graph -100 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%aN, %ar) %Cred%d' --date-order
+  graph = log --graph -1000 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%aN, %ar) %Cred%d'
+  graph2 = log --graph -1000 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%aN, %ar) %Cred%d' --date-order
 
   precommit = diff --cached --diff-algorithm=minimal -w
 
