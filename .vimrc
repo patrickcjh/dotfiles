@@ -42,6 +42,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-lawrencium'
+"Plugin 'gu-fan/riv.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -158,8 +159,15 @@ let g:UltiSnipsExpandTrigger = '<TAB>'
 let g:UltiSnipsJumpForwardTrigger = '<TAB>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
 
+" vim-table-mode config
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
+
 " vim-puppet config
 let g:puppet_align_hashes = 0
+
+" riv.vim config
+let g:riv_disable_folding = 1
 
 " Import mswin key mappings and behavior.
 source $VIMRUNTIME/mswin.vim
