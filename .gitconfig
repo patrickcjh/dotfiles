@@ -14,6 +14,8 @@
   sts = stash list
   sta = stash
   tags = tag
+  showf = show --first-parent
+  showm = show -m
   summary = show --summary
   sum = show --summary
   st = status
@@ -25,7 +27,17 @@
   uncommit = reset --mixed HEAD~
   amend = commit --amend
   co = checkout
+  fetchp = fetch --prune
   desc = describe --tags
+
+  hgrep = log --format=format:'%h' -i --grep
+  slogg = log --oneline -i --grep
+  mlogg = log --format=format:'%C(yellow)%h %C(white)%s %Cgreen(%ar by %an) %Cred%d' -i --grep
+  showg = "!f() { git show `git hgrep \"$1\"`; }; f"
+  showfg = "!f() { git show --first-parent `git hgrep \"$1\"`; }; f"
+  showmg = "!f() { git show -m `git hgrep \"$1\"`; }; f"
+  sumg = "!f() { git show --summary `git hgrep \"$1\"`; }; f"
+  descg = "!f() { git describe --tags `git hgrep \"$1\"`; }; f"
 
   nevermind = !git reset --hard HEAD && git clean -d -f
   nvm = !git reset --hard HEAD && git clean -d -f
@@ -46,10 +58,18 @@
   rebase = preserve
 
 [push]
-	default = simple
+  default = simple
 
 [rebase]
   autoStash = true
+
+[commit]
+  #gpgsign = true
+
+[user]
+  #name = Patrick Chin
+  #email = patrickcjh@gmail.com
+  #signingkey = 58A0C0DF
 
 [url "https://github.com/"]
   insteadOf = gh:
