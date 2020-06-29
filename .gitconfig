@@ -63,6 +63,9 @@
 [rebase]
   autoStash = true
 
+[diff]
+  renames = true
+
 [commit]
   #gpgsign = true
 
