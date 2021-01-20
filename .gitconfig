@@ -18,9 +18,12 @@
   showm = show -m
   summary = show --summary
   sum = show --summary
+  sumff = show --summary --format=fuller
   st = status
   slog = log --oneline
+  slogm = log --oneline master..
   mlog = log --format=format:'%C(yellow)%h %C(white)%s %Cgreen(%ar by %an) %Cred%d'
+  mlogm = log --format=format:'%C(yellow)%h %C(white)%s %Cgreen(%ar by %an) %Cred%d' master..
 
   unstage = reset -q HEAD --
   discard = checkout --
@@ -28,6 +31,7 @@
   amend = commit --amend
   co = checkout
   fetchp = fetch --prune
+  pullp = pull --prune
   desc = describe --tags
 
   hgrep = log --format=format:'%h' -i --grep
