@@ -64,7 +64,7 @@
   autoStash = true
 
 [diff]
-  renames = true
+  renames = copies
 
 [commit]
   #gpgsign = true
