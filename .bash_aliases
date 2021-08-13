@@ -6,3 +6,4 @@ alias egrep='egrep --color=auto --exclude-dir=.git --exclude=*.sw? --exclude=*.p
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias dss='du -sh * | sort -h'
