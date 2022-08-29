@@ -44,6 +44,7 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-lawrencium'
 "Plugin 'gu-fan/riv.vim'
+Plugin 'hashivim/vim-terraform'
 
 
 " All of your Plugins must be added before the following line
