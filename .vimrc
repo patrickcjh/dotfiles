@@ -46,6 +46,10 @@ Plugin 'ludovicchabant/vim-lawrencium'
 "Plugin 'gu-fan/riv.vim'
 Plugin 'hashivim/vim-terraform'
 
+" Plugins to visualize test coverage results
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-coverage'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -270,6 +274,9 @@ nnoremap ]Q :clast<CR>
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gr :YcmForceCompileAndDiagnostics<CR>
+
+" vim-coverage shortcuts
+nnoremap <Leader>cv :CoverageToggle<CR>
 
 " Hard mode - disable arrow keys
 map <Up>	 :echo "no!"<cr>
