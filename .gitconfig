@@ -20,15 +20,16 @@
   sum = show --summary
   sumff = show --summary --format=fuller --show-signature
   st = status
-  slog = log --oneline
-  slogm = log --oneline master..
-  mlog = log --format=format:'%C(yellow)%h %C(white)%s %Cgreen(%ar by %an) %Cred%d'
-  mlogm = log --format=format:'%C(yellow)%h %C(white)%s %Cgreen(%ar by %an) %Cred%d' master..
+  slog = log --boundary --oneline
+  slogm = log --boundary --oneline master..
+  mlog = log --boundary --format=format:'%C(yellow)%h %C(white)%s %Cgreen(%ar by %an) %Cred%d'
+  mlogm = log --boundary --format=format:'%C(yellow)%h %C(white)%s %Cgreen(%ar by %an) %Cred%d' master..
 
   unstage = reset -q HEAD --
   discard = checkout --
   uncommit = reset --mixed HEAD~
   amend = commit --amend
+  sign = commit -S --amend --no-edit
   co = checkout
   fetchp = fetch --prune
   pullp = pull --prune
@@ -46,8 +47,8 @@
   nevermind = !git reset --hard HEAD && git clean -d -f
   nvm = !git reset --hard HEAD && git clean -d -f
 
-  graph = log --graph -1000 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%aN, %ar) %Cred%d'
-  graph2 = log --graph -1000 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%aN, %ar) %Cred%d' --date-order
+  graph = log --graph -100000 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%aN, %ar) %Cred%d'
+  graph2 = log --graph -100000 --branches --remotes --tags --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%aN, %ar) %Cred%d' --date-order
 
   precommit = diff --cached --diff-algorithm=minimal -w
 
@@ -68,6 +69,7 @@
   autoStash = true
 
 [diff]
+  color = true
   renames = copies
 
 [commit]
