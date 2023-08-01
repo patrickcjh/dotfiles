@@ -234,6 +234,8 @@ vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
 " Allow you to easily search the current word.
 nnoremap <Leader>ff /\<<C-r><C-w>\><CR>
 vnoremap <Leader>ff y/<C-r>"<CR>
+nnoremap <Leader>gf :Ggrep! "\<<C-r><C-w>\>"<CR>:cw<CR>
+vnoremap <Leader>gf y:Ggrep! "<C-r>""<CR>:cw<CR>
 
 " Diff shortcuts
 noremap <leader>df :call DiffToggle()<CR>
