@@ -9,4 +9,4 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
-bind P capture-pane -S -1000000 -E -\; save-buffer "/tmp/printscreen"
+bind P capture-pane -S -1000000 -E -\; save-buffer "/tmp/printscreen"\; clear-history
