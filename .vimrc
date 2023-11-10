@@ -123,6 +123,9 @@ let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
 let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|build|dist|env|node_modules|platforms|plugins|www\/lib)[\/]'
 
+" vim-go config
+let g:go_bin_path = $HOME . "/.vim/bundle/vim-go/bin"
+
 " ROS config
 let g:ros_make = "current"
 let g:ros_build_system = "catkin"
