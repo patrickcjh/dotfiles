@@ -42,9 +42,21 @@ Plugin 'erisian/rest_tools'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-fugitive'
-Plugin 'ludovicchabant/vim-lawrencium'
+"Plugin 'ludovicchabant/vim-lawrencium'
 "Plugin 'gu-fan/riv.vim'
 Plugin 'hashivim/vim-terraform'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'ConradIrwin/vim-bracketed-paste'
+
+" Plugins for HTML
+Plugin 'alvan/vim-closetag'
+Plugin 'AndrewRadev/tagalong.vim'
+
+" Plugins for JS frameworks
+Plugin 'wuelnerdotexe/vim-astro'
+Plugin 'evanleck/vim-svelte'
 
 " Plugins to visualize test coverage results
 Plugin 'google/vim-maktaba'
@@ -133,19 +145,30 @@ let g:ros_build_system = "catkin"
 
 " AutoFormat config
 let g:autoformat_verbosemode = 1
+" Disable fallbacks
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
 "! astyle version 2.05 or higher is required
 let g:formatdef_astyle_cpp = '"astyle --mode=c --style=allman --indent=spaces=2 --pad-oper --unpad-paren --pad-header --convert-tabs"'
 let g:formatters_cpp = ['astyle_cpp']
 "! sudo apt-get install python-autopep8
 let g:formatdef_autopep8 = '"autopep8 - -aa --max-line-length=199 --ignore=E128"'
 let g:formatters_python = ['autopep8']
-"! sudo npm install -g js-beautify
-" Formatter for js, json, html and css.
-let g:formatdef_jsbeautify_js = '"js-beautify -f - --jslint-happy -s 2 -n"'
-let g:formatters_javascript = ['jsbeautify_js']
-let g:formatters_json = ['jsbeautify_js']
+"! sudo npm install -g prettier
+" Formatter for frontend frameworks
+let g:formatdef_prettier = '"prettier --stdin-filepath ''".expand("%:p")."''".(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'  " bug fix: unquoted file path
+let g:formatters_astro = ['prettier']
+let g:formatters_css = ['prettier']
+let g:formatters_html = ['prettier']
+let g:formatters_javascript = ['prettier']
+let g:formatters_json = ['prettier']
+let g:formatters_scss = ['prettier']
+let g:formatters_svelte = ['prettier']
+let g:formatters_typescript = ['prettier']
 " Formatter for golang
 let g:formatters_go = ['goimports', 'gofmt_2']
+" Formatter for rust
+let g:formatdef_rustfmt = '"rustfmt --edition 2021"'
 
 
 " Indentation config for html and htmldjango
@@ -181,6 +204,10 @@ let g:puppet_align_hashes = 0
 " riv.vim config
 let g:riv_disable_folding = 1
 
+" vim-closetag and tagalong config
+let g:closetag_filetypes = 'html,htmldjango,astro,svelte'
+let g:tagalong_additional_filetypes = ['astro', 'svelte']
+
 " Import mswin key mappings and behavior.
 source $VIMRUNTIME/mswin.vim
 
@@ -197,6 +224,9 @@ iunmap <C-Y>
 "noremap <C-W><C-W>		:q!<CR>
 "vnoremap <C-W><C-W>		<C-C>:q!<CR>
 "inoremap <C-W><C-W>		<C-O>:q!<CR>
+
+" Map CTRL-C to ESC, so that it triggers |InsertLeave| autocommand event
+inoremap <C-C> <Esc>
 
 " Insert mode shortcuts
 inoremap II		<Esc>I
