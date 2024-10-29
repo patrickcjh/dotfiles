@@ -1,83 +1,53 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+""" Install vim plug
+if empty(glob('~/.vim/autoload/plug.vim')) && executable('curl')
+  echom 'Installing Vim-Plug...'
+  echom ''
+  silent execute '!curl -fLo '.glob('~').'/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+set rtp+=~/.vim  "  fix windows support for .vim file
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+""" Plugins
+call plug#begin()
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'djoshea/vim-autoread'
-Plugin 'farhanmustar/gv.vim'
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-ctrlspace/vim-ctrlspace'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'djoshea/vim-autoread'
+Plug 'farhanmustar/gv.vim'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 
 " Linting
-Plugin 'vim-autoformat/vim-autoformat'
+Plug 'vim-autoformat/vim-autoformat'
 
 " HTML
-Plugin 'alvan/vim-closetag'
-Plugin 'AndrewRadev/tagalong.vim'
+Plug 'alvan/vim-closetag'
+Plug 'AndrewRadev/tagalong.vim'
 " Astro
-Plugin 'wuelnerdotexe/vim-astro'
+Plug 'wuelnerdotexe/vim-astro'
 " Svelte
-Plugin 'evanleck/vim-svelte'
+Plug 'evanleck/vim-svelte'
 " Golang
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 " Rust
-Plugin 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 " Terraform
-Plugin 'hashivim/vim-terraform'
+Plug 'hashivim/vim-terraform'
 " Puppet
-Plugin 'rodjek/vim-puppet'
+Plug 'rodjek/vim-puppet'
 " Markdown
-Plugin 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode'
 " RestructuredText
-Plugin 'erisian/rest_tools'
+Plug 'erisian/rest_tools'
 " Coverage result visualization
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-coverage'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-coverage'
 
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype off
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#end()
 
 
 """ General settings
@@ -179,7 +149,7 @@ let g:closetag_filetypes = 'html,htmldjango,astro,svelte'
 let g:tagalong_additional_filetypes = ['astro', 'svelte']
 
 " vim-go
-let g:go_bin_path = $HOME . "/.vim/bundle/vim-go/bin"
+let g:go_bin_path = $HOME . "/.vim/plugged/vim-go/bin"
 
 " rust.vim
 let g:rustfmt_autosave = 1
