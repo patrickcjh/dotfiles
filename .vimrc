@@ -127,6 +127,9 @@ set wildmenu
 set wildmode=longest,list
 set wildignore=*.o,*.class,*.swp,*.swo,*.pyc
 
+" set 'selection', 'selectmode', 'mousemodel' and 'keymodel' for MS-Windows
+behave mswin
+
 " Use tree view for netrw directory browsing
 let g:netrw_liststyle=3
 
@@ -191,22 +194,22 @@ let g:table_mode_header_fillchar='='
 
 """ Shortcuts
 
-" Import mswin key mappings and behavior.
-source $VIMRUNTIME/mswin.vim
+" Use CTRL-S for saving.
+noremap <C-S>		:update<CR>
+vnoremap <C-S>		<C-C>:update<CR>
+inoremap <C-S>		<Esc>:update<CR>gi
 
-" Unmap CTRL-Y(redo) to its original scroll
-nunmap <C-Y>
-iunmap <C-Y>
+" CTRL-Z is Undo; not in cmdline though
+noremap <C-Z> u
+inoremap <C-Z> <C-O>u
 
-" Tap CTRL-S twice for save and exit, also in Insert mode
-"noremap <C-S><C-S>		:wq<CR>
-"vnoremap <C-S><C-S>		<C-C>:wq<CR>
-"inoremap <C-S><C-S>		<C-O>:wq<CR>
-
-" Tap CTRL-W twice for exit, also in Insert mode
-"noremap <C-W><C-W>		:q!<CR>
-"vnoremap <C-W><C-W>		<C-C>:q!<CR>
-"inoremap <C-W><C-W>		<C-O>:q!<CR>
+" CTRL-A is Select all
+noremap <C-A> gggH<C-O>G
+inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
+cnoremap <C-A> <C-C>gggH<C-O>G
+onoremap <C-A> <C-C>gggH<C-O>G
+snoremap <C-A> <C-C>gggH<C-O>G
+xnoremap <C-A> <C-C>ggVG
 
 " Map CTRL-C to ESC, so that it triggers |InsertLeave| autocommand event
 inoremap <C-C> <Esc>
