@@ -26,39 +26,39 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
-Plugin 'tpope/vim-sensible'
-Plugin 'djoshea/vim-autoread'
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'szw/vim-ctrlspace'
-Plugin 'fatih/vim-go'
-"Plugin 'taketwo/vim-ros'
-Plugin 'Chiel92/vim-autoformat'
-"Plugin 'scrooloose/syntastic'
-"Plugin 'justmao945/vim-clang'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
-"Plugin 'SirVer/ultisnips'
-Plugin 'erisian/rest_tools'
-Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'rodjek/vim-puppet'
-Plugin 'tpope/vim-fugitive'
-"Plugin 'ludovicchabant/vim-lawrencium'
-"Plugin 'gu-fan/riv.vim'
-Plugin 'hashivim/vim-terraform'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
 Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'djoshea/vim-autoread'
+Plugin 'farhanmustar/gv.vim'
+Plugin 'terryma/vim-smooth-scroll'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-ctrlspace/vim-ctrlspace'
 
-" Plugins for HTML
+" Linting
+Plugin 'vim-autoformat/vim-autoformat'
+
+" HTML
 Plugin 'alvan/vim-closetag'
 Plugin 'AndrewRadev/tagalong.vim'
-
-" Plugins for JS frameworks
+" Astro
 Plugin 'wuelnerdotexe/vim-astro'
+" Svelte
 Plugin 'evanleck/vim-svelte'
-
-" Plugins to visualize test coverage results
+" Golang
+Plugin 'fatih/vim-go'
+" Rust
+Plugin 'rust-lang/rust.vim'
+" Terraform
+Plugin 'hashivim/vim-terraform'
+" Puppet
+Plugin 'rodjek/vim-puppet'
+" Markdown
+Plugin 'dhruvasagar/vim-table-mode'
+" RestructuredText
+Plugin 'erisian/rest_tools'
+" Coverage result visualization
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-coverage'
 
@@ -79,6 +79,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+
+""" General settings
 
 " Inherit aliases from ~/.bash_aliases
 let $BASH_ENV = "~/.bash_aliases"
@@ -128,22 +130,20 @@ set wildignore=*.o,*.class,*.swp,*.swo,*.pyc
 " Use tree view for netrw directory browsing
 let g:netrw_liststyle=3
 
-" CtrlSpace config
+" Indentation config for html and htmldjango
+let g:html_indent_inctags = 'body,head,tbody,p'
+
+
+""" Plugins settings
+
+" vim-ctrlspace
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
 let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|build|dist|env|node_modules|platforms|plugins|www\/lib)[\/]'
 
-" vim-go config
-let g:go_bin_path = $HOME . "/.vim/bundle/vim-go/bin"
-
-" ROS config
-let g:ros_make = "current"
-let g:ros_build_system = "catkin"
-"let g:ros_catkin_make_options = "-DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-
-" AutoFormat config
+" vim-autoformat
 let g:autoformat_verbosemode = 1
 " Disable fallbacks
 let g:autoformat_autoindent = 0
@@ -170,43 +170,26 @@ let g:formatters_go = ['goimports', 'gofmt_2']
 " Formatter for rust
 let g:formatdef_rustfmt = '"rustfmt --edition 2021"'
 
+" HTML
+" vim-closetag and tagalong
+let g:closetag_filetypes = 'html,htmldjango,astro,svelte'
+let g:tagalong_additional_filetypes = ['astro', 'svelte']
 
-" Indentation config for html and htmldjango
-let g:html_indent_inctags = 'body,head,tbody,p'
+" vim-go
+let g:go_bin_path = $HOME . "/.vim/bundle/vim-go/bin"
 
-" YouCompleteMe config
-let g:ycm_always_populate_location_list = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_key_list_select_completion = ['<C-n>']		" Disable <Down> and <TAB> key
-let g:ycm_key_list_previous_completion = ['<C-p>']	" Disable <Up> and <S-TAB> key
+" rust.vim
+let g:rustfmt_autosave = 1
 
-" Associates triggers with ROS filetypes
-let g:ycm_semantic_triggers = {
-\   'roslaunch': ['="', '$(', '/'],
-\   'rosmsg,rossrv,rosaction': ['re!^'],
-\ }
+" vim-puppet
+let g:puppet_align_hashes = 0
 
-" SuperTab and UltiSnips config
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:UltiSnipsExpandTrigger = '<TAB>'
-let g:UltiSnipsJumpForwardTrigger = '<TAB>'
-let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
-
-" vim-table-mode config
+" vim-table-mode
 let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
 
-" vim-puppet config
-let g:puppet_align_hashes = 0
 
-" riv.vim config
-let g:riv_disable_folding = 1
-
-" vim-closetag and tagalong config
-let g:closetag_filetypes = 'html,htmldjango,astro,svelte'
-let g:tagalong_additional_filetypes = ['astro', 'svelte']
+""" Shortcuts
 
 " Import mswin key mappings and behavior.
 source $VIMRUNTIME/mswin.vim
@@ -293,11 +276,7 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
 
-" ROS shortcuts
-noremap <F10> :make!<CR>
-
 " AutoFormat shortcuts
-"noremap <F3> :Autoformat<CR><CR>
 noremap <leader>af :Autoformat<CR>
 
 " Remove trailing whitespaces
@@ -308,11 +287,6 @@ nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
-
-" YouCompleteMe shortcuts
-nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>gt :YcmCompleter GetType<CR>
-nnoremap <leader>gr :YcmForceCompileAndDiagnostics<CR>
 
 " vim-coverage shortcuts
 nnoremap <Leader>cv :CoverageToggle<CR>
@@ -329,4 +303,3 @@ inoremap <Right>	<NOP>
 
 " Disable Execute Mode
 nmap Q	<NOP>
-
