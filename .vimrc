@@ -241,28 +241,8 @@ function! DiffToggle()
   endif
 :endfunction
 
-" Smooth Scroll shortcuts
-noremap <silent> <c-y> :call smooth_scroll#up(3, 0, 3)<CR>
-noremap <silent> <c-e> :call smooth_scroll#down(3, 0, 3)<CR>
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
-
-" AutoFormat shortcuts
-noremap <leader>af :Autoformat<CR>
-
 " Remove trailing whitespaces
 noremap <leader>as :%s/\s\+$//e<CR>
-
-" Fugitive shortcuts
-nnoremap [q :cprev<CR>
-nnoremap ]q :cnext<CR>
-nnoremap [Q :cfirst<CR>
-nnoremap ]Q :clast<CR>
-
-" vim-coverage shortcuts
-nnoremap <Leader>cv :CoverageToggle<CR>
 
 " Hard mode - disable arrow keys
 map <Up>	 :echo "no!"<cr>
@@ -276,3 +256,28 @@ inoremap <Right>	<NOP>
 
 " Disable Execute Mode
 nmap Q	<NOP>
+
+
+""" Plugin shortcuts
+
+" vim-smooth-scroll shortcuts
+noremap <silent> <c-y> :call smooth_scroll#up(3, 0, 3)<CR>
+noremap <silent> <c-e> :call smooth_scroll#down(3, 0, 3)<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
+
+" vim-fugitive shortcuts
+" make Gvd (Gvdiffsplit) always open to the left
+command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gvd exe fugitive#Diffsplit(0, <bang>0, "vertical leftabove <mods>", <q-args>)
+nnoremap [q :cprev<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap ]Q :clast<CR>
+
+" vim-autoformat shortcuts
+noremap <leader>af :Autoformat<CR>
+
+" vim-coverage shortcuts
+nnoremap <Leader>cv :CoverageToggle<CR>
