@@ -33,7 +33,7 @@
   co = checkout
   fetchp = fetch --prune
   pullp = pull --prune
-  desc = describe --tags
+  desc = describe --tags --long --always --dirty
 
   hgrep = log --branches --remotes --tags --format=format:'%h' -i --grep
   slogg = log --branches --remotes --tags --oneline -i --grep
@@ -60,7 +60,8 @@
   prompt = false
 
 [pull]
-  rebase = preserve
+  rebase = merges
+  ; rebase = preserve  ; for older git.
 
 [push]
   default = simple
@@ -71,6 +72,9 @@
 [diff]
   color = true
   renames = copies
+
+[rerere]
+  enabled = true
 
 [commit]
   #gpgsign = true
