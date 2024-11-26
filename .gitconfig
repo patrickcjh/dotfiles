@@ -33,6 +33,7 @@
   co = checkout
   fetchp = fetch --prune
   pullp = pull --prune
+  pushf = push --force-with-lease
   desc = describe --tags --long --always --dirty
 
   hgrep = log --branches --remotes --tags --format=format:'%h' -i --grep
