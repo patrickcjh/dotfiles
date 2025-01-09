@@ -250,6 +250,8 @@ nnoremap <Leader>fh :lgrep -rn "\<<C-r><C-w>\>" <C-r>=expand('%:p:h')<CR>/<CR>:b
 vnoremap <Leader>fh y:lgrep -rn "<C-r>"" <C-r>=expand('%:p:h')<CR>/<CR>:bo lw<CR>
 nnoremap <Leader>gf :Ggrep! "\<<C-r><C-w>\>"<CR>:bo cw<CR>
 vnoremap <Leader>gf y:Ggrep! "<C-r>""<CR>:bo cw<CR>
+nnoremap <Leader>gF :Ggrep! "\<<C-r><C-w>\>"<CR>:cclose<CR>:tab cw<CR>:top split<CR>
+vnoremap <Leader>gF y:Ggrep! "<C-r>""<CR>:cclose<CR>:tab cw<CR>:top split<CR>
 
 " Diff shortcuts
 noremap <leader>df :call DiffToggle()<CR>
