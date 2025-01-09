@@ -15,6 +15,8 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'djoshea/vim-autoread'
 Plug 'farhanmustar/gv.vim'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'ton/vim-bufsurf'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
@@ -270,6 +272,10 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
+
+" vim-bufsurf shortcuts
+nmap <c-p> <Plug>(buf-surf-back)
+nmap <c-n> <Plug>(buf-surf-forward)
 
 " vim-fugitive shortcuts
 " make Gvd (Gvdiffsplit) always open to the left
