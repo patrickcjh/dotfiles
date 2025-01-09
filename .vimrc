@@ -23,8 +23,16 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 
+" LSP
+if !empty($USE_COC)
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+
 " Linting
 Plug 'vim-autoformat/vim-autoformat'
+if !empty($USE_ALE)
+  Plug 'dense-analysis/ale'
+endif
 
 " HTML
 Plug 'alvan/vim-closetag'
@@ -117,6 +125,14 @@ let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
 let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|build|dist|env|node_modules|platforms|plugins|www\/lib)[\/]'
+
+" coc.nvim
+let g:coc_disable_startup_warning = 1
+let g:coc_global_extensions = ['coc-rust-analyzer']
+
+" ale
+let g:ale_fixers = {'javascript': ['eslint']}
+let g:ale_linters = {'rust': ['analyzer']}
 
 " vim-autoformat
 let g:autoformat_verbosemode = 1
@@ -284,6 +300,30 @@ nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
+
+" coc.nvim shortcuts
+
+" Navigate diagnostics
+nmap <silent> <c-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <c-j> <Plug>(coc-diagnostic-next)
+nnoremap <leader>gg :CocDiagnostics<CR>
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gh <Plug>(coc-references)
+
+" Use H to show documentation in preview window.
+nnoremap <silent> H :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " vim-autoformat shortcuts
 noremap <leader>af :Autoformat<CR>
