@@ -30,7 +30,7 @@ Plug 'AndrewRadev/tagalong.vim'
 " Astro
 Plug 'wuelnerdotexe/vim-astro'
 " Svelte
-Plug 'evanleck/vim-svelte'
+Plug 'leafOfTree/vim-svelte-plugin'
 " Golang
 Plug 'fatih/vim-go'
 " Rust
@@ -147,6 +147,9 @@ let g:formatdef_rustfmt = '"rustfmt --edition 2021"'
 " vim-closetag and tagalong
 let g:closetag_filetypes = 'html,htmldjango,astro,svelte'
 let g:tagalong_additional_filetypes = ['astro', 'svelte']
+
+" vim-svelte-plugin
+let g:vim_svelte_plugin_use_typescript = 1
 
 " vim-go
 let g:go_bin_path = $HOME . "/.vim/plugged/vim-go/bin"
