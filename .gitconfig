@@ -34,7 +34,8 @@
   fetchp = fetch --prune
   pullp = pull --prune
   pushf = push --force-with-lease
-  desc = describe --tags --long --always --dirty
+  desc = describe --tags --long --always
+  descd = describe --tags --long --always --dirty
 
   hgrep = log --branches --remotes --tags --format=format:'%h' -i --grep
   slogg = log --branches --remotes --tags --oneline -i --grep
