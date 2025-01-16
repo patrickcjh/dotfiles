@@ -14,6 +14,7 @@ call plug#begin()
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'djoshea/vim-autoread'
 Plug 'farhanmustar/gv.vim'
+Plug 'preservim/tagbar'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-commentary'
@@ -37,6 +38,8 @@ endif
 " HTML
 Plug 'alvan/vim-closetag'
 Plug 'AndrewRadev/tagalong.vim'
+" Typescript
+Plug 'leafgarland/typescript-vim'
 " Astro
 Plug 'wuelnerdotexe/vim-astro'
 " Svelte
@@ -116,8 +119,15 @@ let g:netrw_liststyle=3
 " Indentation config for html and htmldjango
 let g:html_indent_inctags = 'body,head,tbody,p'
 
+" Status line
+set statusline=%<%f\ %h%m%r\ %{tagbar#currenttag('[%s]','','f','scoped-stl')}%=%-14.(%l,%c%V%)\ %P
+" set statusline=%<%f\ %h%m%r\ %{tagbar#currenttag('[%s]','','f','scoped-stl')}\ %{tagbar#currenttagtype('(%s)','')}%=%-14.(%l,%c%V%)\ %P
+
 
 """ Plugins settings
+
+" tagbar
+let g:tagbar_sort = 0
 
 " vim-ctrlspace
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
@@ -282,6 +292,9 @@ nmap Q	<NOP>
 
 
 """ Plugin shortcuts
+
+" tagbar shortcuts
+nmap <F12> :TagbarToggle<CR>
 
 " vim-smooth-scroll shortcuts
 noremap <silent> <c-y> :call smooth_scroll#up(3, 0, 3)<CR>
