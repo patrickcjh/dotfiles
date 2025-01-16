@@ -13,6 +13,7 @@ call plug#begin()
 
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'djoshea/vim-autoread'
+Plug 'erietz/vim-terminator'
 Plug 'farhanmustar/gv.vim'
 Plug 'preservim/tagbar'
 Plug 'terryma/vim-smooth-scroll'
@@ -123,8 +124,26 @@ let g:html_indent_inctags = 'body,head,tbody,p'
 set statusline=%<%f\ %h%m%r\ %{tagbar#currenttag('[%s]','','f','scoped-stl')}%=%-14.(%l,%c%V%)\ %P
 " set statusline=%<%f\ %h%m%r\ %{tagbar#currenttag('[%s]','','f','scoped-stl')}\ %{tagbar#currenttagtype('(%s)','')}%=%-14.(%l,%c%V%)\ %P
 
+" Quickfix folding
+function! g:IsContinuation(lnum)
+  let line = getline(a:lnum)
+  return line[0:2] == '|| '
+endfunction
+
+au BufReadPost quickfix setlocal foldmethod=expr
+au BufReadPost quickfix setlocal foldexpr=g:IsContinuation(v:lnum+1)?1:'<1'
+au BufReadPost quickfix setlocal winheight=20
+au BufReadPost quickfix setlocal winheight=1
+
 
 """ Plugins settings
+
+" vim-terminator
+let g:terminator_split_fraction = 0.05
+let g:terminator_runfile_map = {
+  \ "rust": "[ -n '$fileName' ] && cargo clippy && echo 'note: Success\n --> Cargo.toml:1:1' 1>&2",
+  \ "svelte": "[ -n '$fileName' ] && npm run lint 1>&2 && echo 'Success' 1>&2",
+  \ }
 
 " tagbar
 let g:tagbar_sort = 0
@@ -263,6 +282,17 @@ vnoremap <Leader>gf y:Ggrep! "<C-r>""<CR>:bo cw<CR>
 nnoremap <Leader>gF :Ggrep! "\<<C-r><C-w>\>"<CR>:cclose<CR>:tab cw<CR>:top split<CR>
 vnoremap <Leader>gF y:Ggrep! "<C-r>""<CR>:cclose<CR>:tab cw<CR>:top split<CR>
 
+" Quickfix shortcuts
+au BufReadPost quickfix nnoremap <buffer><lt> zc
+au BufReadPost quickfix nnoremap <buffer>> zo
+au BufReadPost quickfix nnoremap <buffer>= za
+nnoremap [q :cprev<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap ]Q :clast<CR>
+nnoremap <c-k> :cprev<CR>
+nnoremap <c-j> :cnext<CR>
+
 " Diff shortcuts
 noremap <leader>df :call DiffToggle()<CR>
 function! DiffToggle()
@@ -293,6 +323,9 @@ nmap Q	<NOP>
 
 """ Plugin shortcuts
 
+" vim-terminator shortcuts
+nmap <F10> <leader>rf
+
 " tagbar shortcuts
 nmap <F12> :TagbarToggle<CR>
 
@@ -311,16 +344,14 @@ nmap <c-n> <Plug>(buf-surf-forward)
 " vim-fugitive shortcuts
 " make Gvd (Gvdiffsplit) always open to the left
 command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gvd exe fugitive#Diffsplit(0, <bang>0, "vertical leftabove <mods>", <q-args>)
-nnoremap [q :cprev<CR>
-nnoremap ]q :cnext<CR>
-nnoremap [Q :cfirst<CR>
-nnoremap ]Q :clast<CR>
 
 " coc.nvim shortcuts
 
 " Navigate diagnostics
-nmap <silent> <c-k> <Plug>(coc-diagnostic-prev)
-nmap <silent> <c-j> <Plug>(coc-diagnostic-next)
+if !empty($USE_COC)
+  nmap <silent> <c-k> <Plug>(coc-diagnostic-prev)
+  nmap <silent> <c-j> <Plug>(coc-diagnostic-next)
+endif
 nnoremap <leader>gg :CocDiagnostics<CR>
 
 " GoTo code navigation.
