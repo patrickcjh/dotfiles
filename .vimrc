@@ -182,6 +182,7 @@ let g:formatters_css = ['prettier']
 let g:formatters_html = ['prettier']
 let g:formatters_javascript = ['prettier']
 let g:formatters_json = ['prettier']
+let g:formatters_markdown = ['prettier']
 let g:formatters_scss = ['prettier']
 let g:formatters_svelte = ['prettier']
 let g:formatters_typescript = ['prettier']
@@ -295,14 +296,33 @@ nnoremap <c-j> :cnext<CR>
 
 " Diff shortcuts
 noremap <leader>df :call DiffToggle()<CR>
+noremap <leader>dt :call DiffToggleOne()<CR>
+
 function! DiffToggle()
+  let currwin=winnr()
   if &diff
     diffoff!
     windo setlocal nocursorbind
   else
-    windo diffthis
+    windo call DiffThis()
   endif
-:endfunction
+  " restores current window
+  execute currwin . 'wincmd w'
+endfunction
+
+function! DiffThis()
+  if &filetype != 'fugitive' && &filetype != 'qf'
+    diffthis
+  endif
+endfunction
+
+function! DiffToggleOne()
+  if &diff
+    diffoff
+  else
+    diffthis
+  endif
+endfunction
 
 " Remove trailing whitespaces
 noremap <leader>as :%s/\s\+$//e<CR>
