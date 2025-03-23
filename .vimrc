@@ -57,6 +57,8 @@ Plug 'rodjek/vim-puppet'
 Plug 'dhruvasagar/vim-table-mode'
 " RestructuredText
 Plug 'erisian/rest_tools'
+" TOML
+Plug 'cespare/vim-toml'
 " Coverage result visualization
 Plug 'google/vim-maktaba'
 Plug 'google/vim-coverage'
@@ -192,6 +194,8 @@ let g:formatters_typescript = ['prettier']
 let g:formatters_go = ['goimports', 'gofmt_2']
 " Formatter for rust
 let g:formatdef_rustfmt = '"rustfmt --edition 2021"'
+" Formatter for yaml
+let g:formatters_yaml = ['prettier']
 
 " HTML
 " vim-closetag and tagalong
