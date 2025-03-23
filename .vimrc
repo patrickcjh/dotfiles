@@ -14,6 +14,7 @@ call plug#begin()
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'djoshea/vim-autoread'
 Plug 'erietz/vim-terminator'
+Plug 'farhanmustar/cg.vim'
 Plug 'farhanmustar/gv.vim'
 Plug 'preservim/tagbar'
 Plug 'terryma/vim-smooth-scroll'
@@ -148,6 +149,11 @@ let g:terminator_runfile_map = {
   \   "cargo clippy && echo 'note: Success\n --> Cargo.toml:1:1' >&2; fi",
   \ "svelte": "[ -n '$fileName ' ] && npm run lint >&2 && echo 'Success' >&2",
   \ }
+
+" cg
+let g:cg_comp_model = 'gpt-3.5-turbo-instruct'
+let g:cg_chat_model = 'gpt-3.5-turbo'
+let g:cg_api_key = getenv('OPENAI_API_KEY')
 
 " tagbar
 let g:tagbar_sort = 0
