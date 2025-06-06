@@ -184,9 +184,9 @@ let g:formatters_cpp = ['astyle_cpp']
 "! sudo apt-get install python-autopep8
 let g:formatdef_autopep8 = '"autopep8 - -aa --max-line-length=199 --ignore=E128"'
 let g:formatters_python = ['autopep8']
-"! sudo npm install -g prettier
+"! sudo npm install -g @fsouza/prettierd
 " Formatter for frontend frameworks
-let g:formatdef_prettier = '"prettier --stdin-filepath ''".expand("%:p")."''".(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth()'  " bug fix: unquoted file path
+let g:formatdef_prettier = '"bash -c ''output=$(prettierd --stdin-filepath \"" . expand("%:p") . "\"" . (&textwidth ? " --print-width " . &textwidth : "") . " --tab-width=" . shiftwidth() . ") || { echo \"$output\" 1>&2; exit 1; }; echo \"$output\"''"'  " bug fix: quote file path and redirect to stderr
 let g:formatters_astro = ['prettier']
 let g:formatters_css = ['prettier']
 let g:formatters_html = ['prettier']
@@ -303,8 +303,6 @@ nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
-nnoremap <c-k> :cprev<CR>
-nnoremap <c-j> :cnext<CR>
 
 " Diff shortcuts
 noremap <leader>df :call DiffToggle()<CR>
