@@ -6,7 +6,7 @@ alias egrep='egrep --color=auto --exclude-dir=.git --exclude=*.sw? --exclude=*.p
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias dua='du -sch .[!.]* * | sort -h'
+alias dua='sudo du -sch .[!.]* * | sort -h'
 alias decolorize='sed "s/\x1B\[[0-9;]*[JKmsu]//g"'
 alias gf='git fetchp'
 alias gg='git graph'
