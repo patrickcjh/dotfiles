@@ -199,7 +199,7 @@ let g:formatters_typescript = ['prettier']
 " Formatter for golang
 let g:formatters_go = ['goimports', 'gofmt_2']
 " Formatter for rust
-let g:formatdef_rustfmt = '"rustfmt --edition 2021"'
+let g:formatdef_rustfmt = '"rustfmt --edition 2024"'
 " Formatter for yaml
 let g:formatters_yaml = ['prettier']
 
