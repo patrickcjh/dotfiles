@@ -47,7 +47,7 @@ Plug 'wuelnerdotexe/vim-astro'
 " Svelte
 Plug 'leafOfTree/vim-svelte-plugin'
 " Golang
-Plug 'fatih/vim-go'
+"Plug 'fatih/vim-go'
 " Rust
 Plug 'rust-lang/rust.vim'
 " Terraform
