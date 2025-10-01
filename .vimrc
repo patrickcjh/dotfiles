@@ -145,8 +145,8 @@ au BufReadPost quickfix setlocal winheight=1
 let g:terminator_split_fraction = 0.05
 let g:terminator_runfile_map = {
   \ "rust": "if [ '$fileName ' = 'playground.rs ' ]; then " .
-  \   "cargo playground | sed '1i note: Output\\n --> Cargo.toml:1:1' >&2; else " .
-  \   "cargo clippy && echo 'note: Success\n --> Cargo.toml:1:1' >&2; fi",
+  \   "cargo run --example playground | sed '1i note: Output\\n --> Cargo.toml:1:1' >&2; else " .
+  \   "cargo clippy --tests && echo 'note: Success\n --> Cargo.toml:1:1' >&2; fi",
   \ "svelte": "[ -n '$fileName ' ] && npm run lint >&2 && echo 'Success' >&2",
   \ }
 
