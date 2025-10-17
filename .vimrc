@@ -144,9 +144,11 @@ au BufReadPost quickfix setlocal winheight=1
 " vim-terminator
 let g:terminator_split_fraction = 0.05
 let g:terminator_runfile_map = {
-  \ "rust": "if [ '$fileName ' = 'playground.rs ' ]; then " .
-  \   "cargo run --example playground | sed '1i note: Output\\n --> Cargo.toml:1:1' >&2; else " .
-  \   "cargo clippy --tests && echo 'note: Success\n --> Cargo.toml:1:1' >&2; fi",
+  \ "rust": "case \"$dir\" in " .
+  \   "*/src/bin/*) cargo run --bin $fileNameWithoutExt | sed '1i note: Output\\n --> Cargo.toml:1:1' >&2;; " .
+  \   "*/examples/*) cargo run --example $fileNameWithoutExt | sed '1i note: Output\\n --> Cargo.toml:1:1' >&2;; " .
+  \   "*) cargo clippy --tests && echo 'note: Success\n --> Cargo.toml:1:1' >&2;; " .
+  \ "esac",
   \ "svelte": "[ -n '$fileName ' ] && npm run lint >&2 && echo 'Success' >&2",
   \ }
 
