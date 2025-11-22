@@ -166,6 +166,9 @@ let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
 let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|build|dist|env|node_modules|platforms|plugins|www\/lib)[\/]'
+if executable('rg')
+    let g:CtrlSpaceGlobCommand = 'rg --color=never --files'
+endif
 
 " coc.nvim
 let g:coc_disable_startup_warning = 1
