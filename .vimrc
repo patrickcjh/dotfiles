@@ -205,6 +205,25 @@ let g:formatdef_rustfmt = '"rustfmt --edition 2024"'
 " Formatter for yaml
 let g:formatters_yaml = ['prettier']
 
+"! sudo npm install -g js-beautify
+" Formatter for js, json, html and css.
+let g:formatdef_jsbeautify_js = '"js-beautify -f - --jslint-happy -s 2 -n"'
+
+" Use js-beautify for web formats inside ~/fms; fallback to prettier elsewhere.
+function! s:set_project_formatters() abort
+  let l:cwd = fnamemodify(getcwd(), ':p')
+  if l:cwd =~# '^' . fnamemodify('~/fms', ':p')
+    let g:formatters_css = ['jsbeautify_js']
+    let g:formatters_html = ['jsbeautify_js']
+    let g:formatters_javascript = ['jsbeautify_js']
+  else
+    let g:formatters_css = ['prettier']
+    let g:formatters_html = ['prettier']
+    let g:formatters_javascript = ['prettier']
+  endif
+endfunction
+autocmd VimEnter,DirChanged * call s:set_project_formatters()
+
 " HTML
 " vim-closetag and tagalong
 let g:closetag_filetypes = 'html,htmldjango,astro,svelte'
