@@ -310,10 +310,10 @@ vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
 " Allow you to easily search the current word.
 nnoremap <Leader>ff /\<<C-r><C-w>\><CR>
 vnoremap <Leader>ff y/<C-r>"<CR>
-nnoremap <Leader>fg :lgrep -rn "\<<C-r><C-w>\>" <C-r>=expand('%:p:h')<CR>/
-vnoremap <Leader>fg y:lgrep -rn "<C-r>"" <C-r>=expand('%:p:h')<CR>/
-nnoremap <Leader>fh :lgrep -rn "\<<C-r><C-w>\>" <C-r>=expand('%:p:h')<CR>/<CR>:bo lw<CR>
-vnoremap <Leader>fh y:lgrep -rn "<C-r>"" <C-r>=expand('%:p:h')<CR>/<CR>:bo lw<CR>
+nnoremap <Leader>fg :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'
+vnoremap <Leader>fg y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'
+nnoremap <Leader>fh :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'<CR>:bo lw<CR>
+vnoremap <Leader>fh y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'<CR>:bo lw<CR>
 nnoremap <Leader>gf :Ggrep! "\<<C-r><C-w>\>"<CR>:bo cw<CR>
 vnoremap <Leader>gf y:Ggrep! "<C-r>""<CR>:bo cw<CR>
 nnoremap <Leader>gF :Ggrep! "\<<C-r><C-w>\>"<CR>:cclose<CR>:tab cw<CR>:top split<CR>
