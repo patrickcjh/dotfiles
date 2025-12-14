@@ -2,6 +2,8 @@
 .android
 .bloom*
 .cache
+.cargo
+.ccache
 .compiz
 .config
 .cordova
@@ -11,6 +13,7 @@
 .env*
 .erlang.*
 .gnome
+.gnupg
 .gradle
 .hg
 .ipython
@@ -19,6 +22,7 @@
 .mozilla
 .node-gyp
 .npm
+.nvm
 .pip
 .pki
 .ros
