@@ -312,12 +312,15 @@ nnoremap <Leader>ff /\<<C-r><C-w>\><CR>
 vnoremap <Leader>ff y/<C-r>"<CR>
 nnoremap <Leader>fg :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'
 vnoremap <Leader>fg y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'
-nnoremap <Leader>fh :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'<CR>:bo lw<CR>
-vnoremap <Leader>fh y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'<CR>:bo lw<CR>
-nnoremap <Leader>gf :Ggrep! "\<<C-r><C-w>\>"<CR>:bo cw<CR>
-vnoremap <Leader>gf y:Ggrep! "<C-r>""<CR>:bo cw<CR>
-nnoremap <Leader>gF :Ggrep! "\<<C-r><C-w>\>"<CR>:cclose<CR>:tab cw<CR>:top split<CR>
-vnoremap <Leader>gF y:Ggrep! "<C-r>""<CR>:cclose<CR>:tab cw<CR>:top split<CR>
+nnoremap <Leader>fh :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'<CR>:lw<CR>
+vnoremap <Leader>fh y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'<CR>:lw<CR>
+nnoremap <Leader>fH :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'<CR>:tab lw<CR>
+vnoremap <Leader>fH y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'<CR>:tab lw<CR>
+nnoremap <Leader>gf :Glgrep! "\<<C-r><C-w>\>"<CR>:lw<CR>
+vnoremap <Leader>gf y:Glgrep! "<C-r>""<CR>:lw<CR>
+nnoremap <Leader>gF :Glgrep! "\<<C-r><C-w>\>"<CR>:cclose<CR>:tab lw<CR>:top split<CR>
+vnoremap <Leader>gF y:Glgrep! "<C-r>""<CR>:cclose<CR>:tab lw<CR>:top split<CR>
+noremap <Leader>l :tab lw<CR>:top split<CR>
 
 " Quickfix shortcuts
 au BufReadPost quickfix nnoremap <buffer><lt> zc
