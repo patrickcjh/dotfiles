@@ -332,6 +332,12 @@ nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
 
+" Location list shortcuts
+nnoremap [w :lprev<CR>
+nnoremap ]w :lnext<CR>
+nnoremap [W :lfirst<CR>
+nnoremap ]W :llast<CR>
+
 " Diff shortcuts
 noremap <leader>df :call DiffToggle()<CR>
 noremap <leader>dt :call DiffToggleOne()<CR>
