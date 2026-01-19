@@ -1,5 +1,6 @@
 /[^.]*
 .android
+.ansible
 .bloom*
 .cache
 .cargo
