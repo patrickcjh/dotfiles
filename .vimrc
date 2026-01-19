@@ -147,7 +147,8 @@ let g:terminator_runfile_map = {
   \ "rust": "case \"$dir\" in " .
   \   "*/src/bin/*) cargo run --bin $fileNameWithoutExt | sed '1i note: Output\\n --> Cargo.toml:1:1' >&2;; " .
   \   "*/examples/*) cargo run --example $fileNameWithoutExt | sed '1i note: Output\\n --> Cargo.toml:1:1' >&2;; " .
-  \   "*) cargo clippy --tests && echo 'note: Success\n --> Cargo.toml:1:1' >&2;; " .
+  \   "*/tests/*) cargo clippy --tests && echo 'note: Success\n --> Cargo.toml:1:1' >&2;; " .
+  \   "*) cargo clippy && echo 'note: Success\n --> Cargo.toml:1:1' >&2;; " .
   \ "esac",
   \ "svelte": "[ -n '$fileName ' ] && npm run lint >&2 && echo 'Success' >&2",
   \ }
