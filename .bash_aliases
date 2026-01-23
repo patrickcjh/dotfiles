@@ -26,3 +26,11 @@ alias j='just'
 alias evcxr='evcxr --edit-mode vi'
 alias codex_upgrade='npm install --upgrade -g --prefix ~/.local @openai/codex'
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
+
+gw() {
+  if [ "$#" -eq 0 ]; then
+    git worktree list
+  else
+    git worktree "$@"
+  fi
+}
