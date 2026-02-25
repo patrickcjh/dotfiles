@@ -412,6 +412,8 @@ nmap <c-n> <Plug>(buf-surf-forward)
 " vim-fugitive shortcuts
 " make Gvd (Gvdiffsplit) always open to the left
 command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gvd exe fugitive#Diffsplit(0, <bang>0, "vertical leftabove <mods>", <q-args>)
+cnoreabbrev GBlame G blame
+cnoreabbrev Gblame G blame
 
 " coc.nvim shortcuts
 if !empty($USE_COC)
