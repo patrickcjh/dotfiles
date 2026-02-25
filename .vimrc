@@ -172,8 +172,12 @@ if executable('rg')
 endif
 
 " coc.nvim
-let g:coc_disable_startup_warning = 1
-let g:coc_global_extensions = ['coc-rust-analyzer']
+if !empty($USE_COC)
+  set updatetime=300
+  set signcolumn=yes
+  let g:coc_disable_startup_warning = 1
+  let g:coc_global_extensions = ['coc-rust-analyzer']
+endif
 
 " ale
 let g:ale_fixers = {'javascript': ['eslint']}
@@ -410,30 +414,82 @@ nmap <c-n> <Plug>(buf-surf-forward)
 command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gvd exe fugitive#Diffsplit(0, <bang>0, "vertical leftabove <mods>", <q-args>)
 
 " coc.nvim shortcuts
-
-" Navigate diagnostics
 if !empty($USE_COC)
-  nmap <silent> <c-k> <Plug>(coc-diagnostic-prev)
-  nmap <silent> <c-j> <Plug>(coc-diagnostic-next)
-endif
-nnoremap <leader>gg :CocDiagnostics<CR>
+  " Use tab for trigger completion with characters ahead and navigate
+  " NOTE: There's always complete item selected by default, you may want to enable
+  " no select by `"suggest.noselect": true` in your configuration file
+  " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+  " other plugin before putting this into your config
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1) :
+        \ CheckBackspace() ? "\<Tab>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gh <Plug>(coc-references)
+  " Make <CR> to accept selected completion item or notify coc.nvim to format
+  " <C-g>u breaks current undo, please make your own choice
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" Use H to show documentation in preview window.
-nnoremap <silent> H :call <SID>show_documentation()<CR>
+  function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+  " Use <c-space> to trigger completion
+  if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
   else
-    call CocAction('doHover')
+    inoremap <silent><expr> <c-@> coc#refresh()
   endif
-endfunction
+
+  " Use `[g` and `]g` to navigate diagnostics
+  " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+  nmap <silent><nowait> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent><nowait> ]g <Plug>(coc-diagnostic-next)
+  nnoremap <leader>gg :CocDiagnostics<CR>
+
+  " GoTo code navigation.
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gh <Plug>(coc-references)
+
+  " Use K to show documentation in preview window
+  nnoremap <silent> K :call ShowDocumentation()<CR>
+
+  function! ShowDocumentation()
+    if CocAction('hasProvider', 'hover')
+      call CocActionAsync('doHover')
+    else
+      call feedkeys('K', 'in')
+    endif
+  endfunction
+
+  " Highlight the symbol and its references when holding the cursor
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+
+  " Symbol renaming
+  nmap <leader>rn <Plug>(coc-rename)
+
+  " Mappings for CoCList
+  " Show all diagnostics
+  nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+  " Manage extensions
+  nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+  " Show commands
+  nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+  " Find symbol of current document
+  nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+  " Search workspace symbols
+  nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+  " Do default action for next item
+  nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+  " Do default action for previous item
+  nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+  " Resume latest coc list
+  nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+endif
 
 " vim-autoformat shortcuts
 noremap <leader>af :Autoformat<CR>
