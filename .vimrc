@@ -133,9 +133,19 @@ function! g:IsContinuation(lnum)
   return line[0:2] == '|| '
 endfunction
 
+function! s:QfJumpFromFold() abort
+  let l:first = foldclosed('.')
+  if l:first != -1
+    call cursor(l:first, 1)
+  elseif getline('.') =~# '^|| '
+    normal! [z
+  endif
+  execute "normal! \<CR>"
+endfunction
+
 au BufReadPost quickfix setlocal foldmethod=expr
 au BufReadPost quickfix setlocal foldexpr=g:IsContinuation(v:lnum+1)?1:'<1'
-au BufReadPost quickfix setlocal winheight=20
+au BufReadPost quickfix setlocal winheight=10
 au BufReadPost quickfix setlocal winheight=1
 
 
@@ -331,6 +341,7 @@ noremap <Leader>l :tab lw<CR>:top split<CR>
 au BufReadPost quickfix nnoremap <buffer><lt> zc
 au BufReadPost quickfix nnoremap <buffer>> zo
 au BufReadPost quickfix nnoremap <buffer>= za
+au BufReadPost quickfix nnoremap <buffer><silent> <CR> :call <SID>QfJumpFromFold()<CR>
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
