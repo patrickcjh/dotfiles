@@ -460,6 +460,7 @@ if !empty($USE_COC)
 
   " Mappings for CoCList
   " Show all diagnostics
+  nnoremap <silent><nowait> <leader>aa :CocCommand rust-analyzer.runFlycheck<CR>
   nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
   " Manage extensions
   nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
