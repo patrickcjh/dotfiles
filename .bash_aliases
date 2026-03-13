@@ -9,7 +9,6 @@ alias l='ls -CF'
 alias dua='sudo du -sch .[!.]* * | sort -h'
 alias decolorize='sed "s/\x1B\[[0-9;]*[JKmsu]//g"'
 alias gf='git fetchp'
-alias gg='git graph'
 alias gp='git pullp'
 alias vimclean='find -iname "*.sw?" -delete'
 alias cb='cargo build --color always 2>&1 | less -RC'
@@ -33,4 +32,34 @@ gw() {
   else
     git worktree "$@"
   fi
+}
+
+gg() {
+  local git_base gg_file line
+  local -a branches words
+
+  git_base=$(git rev-parse --show-toplevel 2>/dev/null) || {
+    git graph "$@"
+    return
+  }
+
+  gg_file="$git_base/.gg"
+  if [ ! -f "$gg_file" ]; then
+    git graph "$@"
+    return
+  fi
+
+  while IFS= read -r line; do
+    line="${line%%#*}"
+    [ -n "$line" ] || continue
+    read -r -a words <<< "$line"
+    branches+=("${words[@]}")
+  done < "$gg_file"
+
+  if [ "${#branches[@]}" -eq 0 ]; then
+    git graph "$@"
+    return
+  fi
+
+  git mlog --graph "${branches[@]}" "$@"
 }
