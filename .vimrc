@@ -225,13 +225,15 @@ let g:formatdef_jsbeautify_js = '"js-beautify -f - --jslint-happy -s 2 -n"'
 function! s:set_project_formatters() abort
   let l:cwd = fnamemodify(getcwd(), ':p')
   if l:cwd =~# '^' . fnamemodify('~/fms', ':p')
-    let g:formatters_css = ['jsbeautify_js']
+    let g:formatters_css = ['cssbeautify']
     let g:formatters_html = ['jsbeautify_js']
     let g:formatters_javascript = ['jsbeautify_js']
+    let g:formatters_scss = ['cssbeautify']
   else
     let g:formatters_css = ['prettier']
     let g:formatters_html = ['prettier']
     let g:formatters_javascript = ['prettier']
+    let g:formatters_scss = ['prettier']
   endif
 endfunction
 autocmd VimEnter,DirChanged * call s:set_project_formatters()
