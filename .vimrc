@@ -142,6 +142,14 @@ function! s:QfJumpFromFold() abort
   execute "normal! \<CR>"
 endfunction
 
+function! s:LoclistToQuickfix() abort
+  let l:loclist = getloclist(0)
+  let l:title = get(getloclist(0, {'title': 1}), 'title', 'Location List')
+  call setqflist([], 'r', {'items': l:loclist, 'title': l:title})
+  lclose
+  cwindow
+endfunction
+
 au BufReadPost quickfix setlocal foldmethod=expr
 au BufReadPost quickfix setlocal foldexpr=g:IsContinuation(v:lnum+1)?1:'<1'
 au BufReadPost quickfix setlocal winheight=10
@@ -344,6 +352,7 @@ nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
 
 " Location list shortcuts
+nnoremap <Leader>q :call <SID>LoclistToQuickfix()<CR>
 nnoremap [w :lprev<CR>
 nnoremap ]w :lnext<CR>
 nnoremap [W :lfirst<CR>
