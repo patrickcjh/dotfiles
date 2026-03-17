@@ -35,7 +35,7 @@ gw() {
 }
 
 gg() {
-  local git_base gg_file line
+  local git_base gg_file line word
   local -a branches words
 
   git_base=$(git rev-parse --show-toplevel 2>/dev/null) || {
@@ -53,7 +53,10 @@ gg() {
     line="${line%%#*}"
     [ -n "$line" ] || continue
     read -r -a words <<< "$line"
-    branches+=("${words[@]}")
+    for word in "${words[@]}"; do
+      git rev-parse --verify --quiet "${word}^{commit}" >/dev/null || continue
+      branches+=("$word")
+    done
   done < "$gg_file"
 
   if [ "${#branches[@]}" -eq 0 ]; then
