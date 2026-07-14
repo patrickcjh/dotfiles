@@ -30,6 +30,11 @@ if !empty($USE_COC)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
+" Debugging
+if !empty($USE_VIMSPECTOR)
+  Plug 'puremourning/vimspector'
+endif
+
 " Linting
 Plug 'vim-autoformat/vim-autoformat'
 if !empty($USE_ALE)
@@ -228,6 +233,12 @@ if !empty($USE_COC)
   set signcolumn=yes
   let g:coc_disable_startup_warning = 1
   let g:coc_global_extensions = ['coc-rust-analyzer']
+endif
+
+" vimspector
+if !empty($USE_VIMSPECTOR)
+  let g:vimspector_install_gadgets = ['CodeLLDB']
+  let g:vimspector_enable_mappings = 'HUMAN'
 endif
 
 " ale
