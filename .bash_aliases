@@ -6,7 +6,6 @@ alias egrep='egrep --color=auto --exclude-dir=.git --exclude=*.sw? --exclude=*.p
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias dua='sudo du -sch .[!.]* * | sort -h'
 alias decolorize='sed "s/\x1B\[[0-9;]*[JKmsu]//g"'
 alias gf='git fetchp'
 alias gp='git pullp'
@@ -25,6 +24,29 @@ alias j='just'
 alias evcxr='evcxr --edit-mode vi'
 alias codex_upgrade='npm install --upgrade -g --prefix ~/.local @openai/codex'
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
+
+dua() {
+  local target="${1:-.}"
+  local had_nullglob=0
+
+  if shopt -q nullglob; then
+    had_nullglob=1
+  else
+    shopt -s nullglob
+  fi
+
+  local paths=("$target"/.[!.]* "$target"/*)
+
+  if [ "$had_nullglob" -eq 0 ]; then
+    shopt -u nullglob
+  fi
+
+  if [ "${#paths[@]}" -eq 0 ]; then
+    sudo du -sch -- "$target" | sort -h
+  else
+    sudo du -sch -- "${paths[@]}" | sort -h
+  fi
+}
 
 gw() {
   if [ "$#" -eq 0 ]; then
