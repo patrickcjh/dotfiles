@@ -150,6 +150,41 @@ function! s:LoclistToQuickfix() abort
   cwindow
 endfunction
 
+function! s:QuickfixToRepoFile() abort
+  let l:start = getcwd()
+  let l:git_path = finddir('.git', l:start . ';')
+  if empty(l:git_path)
+    let l:git_path = findfile('.git', l:start . ';')
+  endif
+  let l:repo_root = empty(l:git_path) ? l:start : fnamemodify(l:git_path, ':h')
+  let l:repo_root = resolve(fnamemodify(l:repo_root, ':p'))
+
+  let l:qf = getqflist({'items': 1, 'title': 1})
+  let l:lines = []
+  let l:repo_prefix = escape(l:repo_root, '\')
+
+  for l:item in l:qf.items
+    let l:filename = bufname(get(l:item, 'bufnr', 0))
+    if empty(l:filename)
+      let l:filename = get(l:item, 'filename', '')
+    endif
+    if !empty(l:filename)
+      let l:filename = resolve(fnamemodify(l:filename, ':p'))
+      let l:filename = substitute(l:filename, '^' . l:repo_prefix . '/', '', '')
+    endif
+
+    let l:text = substitute(get(l:item, 'text', ''), '\n', ' ', 'g')
+    if !empty(l:filename)
+      call add(l:lines, printf('%s:%d:%d:%s', l:filename, get(l:item, 'lnum', 0), get(l:item, 'col', 0), l:text))
+    else
+      call add(l:lines, l:text)
+    endif
+  endfor
+
+  call writefile(l:lines, l:repo_root . '/.qf')
+  echom 'Wrote quickfix list to ' . l:repo_root . '/.qf'
+endfunction
+
 au BufReadPost quickfix setlocal foldmethod=expr
 au BufReadPost quickfix setlocal foldexpr=g:IsContinuation(v:lnum+1)?1:'<1'
 au BufReadPost quickfix setlocal winheight=10
@@ -350,6 +385,7 @@ nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap ]Q :clast<CR>
+nnoremap <Leader>Q :call <SID>QuickfixToRepoFile()<CR>
 
 " Location list shortcuts
 nnoremap <Leader>q :call <SID>LoclistToQuickfix()<CR>
