@@ -190,6 +190,10 @@ au BufReadPost quickfix setlocal foldexpr=g:IsContinuation(v:lnum+1)?1:'<1'
 au BufReadPost quickfix setlocal winheight=10
 au BufReadPost quickfix setlocal winheight=1
 
+" Enable termdebug
+packadd! termdebug
+let g:termdebugger="rust-gdb"
+
 
 """ Plugins settings
 
@@ -368,13 +372,13 @@ nnoremap <Leader>fg :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'
 vnoremap <Leader>fg y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'
 nnoremap <Leader>fh :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'<CR>:lw<CR>
 vnoremap <Leader>fh y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'<CR>:lw<CR>
-nnoremap <Leader>fH :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'<CR>:tab lw<CR>
-vnoremap <Leader>fH y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'<CR>:tab lw<CR>
+nnoremap <Leader>fH :lgrep -rn "\<<C-r><C-w>\>" '<C-r>=expand('%:p:h')<CR>/'<CR>:lclose<CR>:tab lw<CR>:top split<CR>
+vnoremap <Leader>fH y:lgrep -rn "<C-r>"" '<C-r>=expand('%:p:h')<CR>/'<CR>:lclose<CR>:tab lw<CR>:top split<CR>
 nnoremap <Leader>gf :Glgrep! "\<<C-r><C-w>\>"<CR>:lw<CR>
 vnoremap <Leader>gf y:Glgrep! "<C-r>""<CR>:lw<CR>
-nnoremap <Leader>gF :Glgrep! "\<<C-r><C-w>\>"<CR>:cclose<CR>:tab lw<CR>:top split<CR>
-vnoremap <Leader>gF y:Glgrep! "<C-r>""<CR>:cclose<CR>:tab lw<CR>:top split<CR>
-noremap <Leader>l :tab lw<CR>:top split<CR>
+nnoremap <Leader>gF :Glgrep! "\<<C-r><C-w>\>"<CR>:lclose<CR>:tab lw<CR>:top split<CR>
+vnoremap <Leader>gF y:Glgrep! "<C-r>""<CR>:lclose<CR>:tab lw<CR>:top split<CR>
+noremap <Leader>l :lclose<CR>:tab lw<CR>:top split<CR>
 
 " Quickfix shortcuts
 au BufReadPost quickfix nnoremap <buffer><lt> zc
@@ -439,6 +443,18 @@ inoremap <Right>	<NOP>
 
 " Disable Execute Mode
 nmap Q	<NOP>
+
+" Run htop
+nmap <F11> :tab term htop<CR>
+
+" Termdebug shortcuts
+noremap <Leader>b :Break<CR>
+noremap <Leader>db :Clear<CR>
+noremap <Leader>n :Over<CR>
+noremap <Leader>s :Step<CR>
+noremap <Leader>f :Finish<CR>
+noremap <Leader>c :Continue<CR>
+noremap <Leader>w :Source<CR>
 
 
 """ Plugin shortcuts
