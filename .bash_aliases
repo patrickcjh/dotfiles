@@ -44,7 +44,7 @@ dua() {
   if [ "${#paths[@]}" -eq 0 ]; then
     sudo du -sch -- "$target" | sort -h
   else
-    sudo du -sch -- "${paths[@]}" | sort -h
+    printf '%s\0' "${paths[@]}" | sudo du -sch --files0-from=- | sort -h
   fi
 }
 
