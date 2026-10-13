@@ -15,9 +15,8 @@ alias cl='cargo clippy --color always 2>&1 | less -RC'
 alias cr='cargo run --color always 2>&1 | less -RC'
 alias ct='cargo test --color always -- --show-output 2>&1 | less -RC'
 alias cg='cargo playground --color always 2>&1 | less -RC'
-alias cs='cargo sweep --time 1'
-alias cs0='cargo sweep --time 0'
 alias ce='cargo expand --lib'
+alias ccw='cargo clean --workspace'
 alias ccc='cargo cache clean-unref && cargo cache clean-unref --dry-run && cargo cache clean-unref --dry-run'
 alias scs='sccache --show-stats'
 alias j='just'
@@ -87,4 +86,14 @@ gg() {
   fi
 
   git mlog --graph "${branches[@]}" "$@"
+}
+
+claude-clean-versions() {
+  local dir="$HOME/.local/share/claude/versions"
+  local latest
+  latest=$(ls "$dir" | sort -V | tail -n 1) || return 1
+  for f in "$dir"/*; do
+    [[ "$(basename "$f")" == "$latest" ]] && continue
+    rm -v "$f"
+  done
 }
