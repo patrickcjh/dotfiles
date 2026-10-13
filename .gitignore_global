@@ -3,3 +3,7 @@ __pycache__/
 *.sw[l-p]
 *.py[cod]
 *~
+
+# vim-ctrlspace files
+.cs_files
+.cs_workspaces
