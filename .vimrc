@@ -217,6 +217,13 @@ let g:terminator_runfile_map = {
 " tagbar
 let g:tagbar_sort = 0
 
+" vim-fugitive
+" Fold each file's diff in git commit/diff buffers (e.g. opened from :GV)
+autocmd FileType git setlocal foldmethod=syntax foldlevel=0
+autocmd FileType git nnoremap <buffer><lt> zc
+autocmd FileType git nnoremap <buffer>> zo
+autocmd FileType git nnoremap <buffer>= za
+
 " vim-ctrlspace
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
