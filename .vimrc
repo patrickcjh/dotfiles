@@ -433,7 +433,7 @@ function! DiffToggle()
 endfunction
 
 function! DiffThis()
-  if &filetype != 'fugitive' && &filetype != 'qf'
+  if &filetype != 'fugitive' && &filetype != 'git' && &filetype != 'qf' && &buftype != 'terminal'
     diffthis
   endif
 endfunction
