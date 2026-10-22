@@ -501,6 +501,23 @@ command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gvd exe 
 cnoreabbrev GBlame G blame
 cnoreabbrev Gblame G blame
 
+" gf / <C-W>f / <C-W>gf on a commit hash opens the commit via fugitive;
+" anything else falls back to normal file behaviour.
+function! s:GfCommit(cmd, fallback) abort
+  let word = expand('<cword>')
+  if word =~# '^\x\{7,40}$' && !empty(FugitiveGitDir())
+    try
+      execute a:cmd word
+      return
+    catch
+    endtry
+  endif
+  execute 'normal!' a:fallback
+endfunction
+nnoremap <silent> gf      :<C-U>call <SID>GfCommit('Gedit', 'gf')<CR>
+nnoremap <silent> <C-W>f  :<C-U>call <SID>GfCommit('Gsplit', "\<C-W>f")<CR>
+nnoremap <silent> <C-W>gf :<C-U>call <SID>GfCommit('Gtabedit', "\<C-W>gf")<CR>
+
 " coc.nvim shortcuts
 if !empty($USE_COC)
   " Use <c-space> to trigger completion
