@@ -11,7 +11,6 @@ set rtp+=~/.vim  "  fix windows support for .vim file
 """ Plugins
 call plug#begin()
 
-Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'djoshea/vim-autoread'
 Plug 'erietz/vim-terminator'
 Plug 'farhanmustar/gv.vim'
@@ -117,6 +116,14 @@ set tabstop=2
 set wildmenu
 set wildmode=longest,list
 set wildignore=*.o,*.class,*.swp,*.swo,*.pyc
+
+" Enable native bracketed paste under tmux/screen (byobu), Vim only sets it for xterm
+if &term =~# '^\(screen\|tmux\)'
+  let &t_BE = "\e[?2004h"
+  let &t_BD = "\e[?2004l"
+  exec "set t_PS=\e[200~"
+  exec "set t_PE=\e[201~"
+endif
 
 " set 'selection', 'selectmode', 'mousemodel' and 'keymodel' for MS-Windows
 behave mswin
